@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAssignment2part1">
+        <provider
+            android:name=".StaffContentProvider"
+            android:authorities="com.example.android_assignment2_part1.provider"
+            android:enabled="true"
+            android:exported="true"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

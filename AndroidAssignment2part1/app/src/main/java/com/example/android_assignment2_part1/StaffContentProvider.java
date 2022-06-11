@@ -3,8 +3,8 @@ package com.example.android_assignment2_part1;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,19 +38,20 @@ public class StaffContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        db.getOpenHelper().getWritableDatabase().insert("Staff", SQLiteDatabase.CONFLICT_IGNORE, values);
         return null;
     }
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        db.getOpenHelper().getWritableDatabase().delete("staff", selection, selectionArgs);
         return 0;
     }
 
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-
-
+        db.getOpenHelper().getWritableDatabase().update("staff", SQLiteDatabase.CONFLICT_IGNORE, values, selection, selectionArgs);
         return 0;
     }
 
